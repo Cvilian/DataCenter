@@ -1,0 +1,40 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'mystyle.css' %}">
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Wits Dataset</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    </head>
+<body>
+    <div class="container">
+        <div id='header'>
+            <center style="margin: 20px;"><h3>A network traffic dataset collected by <a href="https://www.gist.ac.kr/site/kr/event_2st/index_en.html">GIST (Gwangju Institute of Science and Technology)</a> since 2021</h3></center>
+            <div></div>
+            <center style="margin: 20px;"><h4>hi</h4></center>
+        </div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <td><B>File</B></td>
+                <td><B>Number of flows</B></td>
+                <td><B>Number of Packets</B></td>
+                <td><B>Size (MB)</B></td>
+            </tr>
+            </thead>
+            <tbody>
+                {% for data in dataset %}
+                <tr>
+                    <td><a href="{{ data.source.url }}" target="_blank" rel="noopener noreferrer">2021-01-18.csv</a></td>
+                    <td>{{ data.flow_count }}</td>
+                    <td>{{ data.packet_count }}</td>
+                    <td>{{ data.size }}</td>
+                </tr>
+                {% endfor %}
+            <tbody>
+        </table>
+</body>
